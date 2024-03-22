@@ -15,3 +15,5 @@ SystemRequirements: Cargo (Rust's package manager), rustc
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
+URL: https://github.com/atsyplenkov/filtrs
+BugReports: https://github.com/atsyplenkov/filtrs/issues

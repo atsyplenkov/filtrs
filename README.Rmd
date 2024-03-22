@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 # filtrs
 
 <!-- badges: start -->
+[![R-CMD-check](https://github.com/atsyplenkov/filtrs/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/atsyplenkov/filtrs/actions/workflows/R-CMD-check.yaml)
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![CRAN status](https://www.r-pkg.org/badges/version/filtrs)](https://CRAN.R-project.org/package=filtrs)
 ![GitHub R package version](https://img.shields.io/github/r-package/v/atsyplenkov/filtrs?label=github)

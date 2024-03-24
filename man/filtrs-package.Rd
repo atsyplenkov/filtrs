@@ -8,6 +8,14 @@
 \description{
 This package offers quick smoothing and linear filtering of spatial and timeseries objects.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/atsyplenkov/filtrs}
+  \item Report bugs at \url{https://github.com/atsyplenkov/filtrs/issues}
+}
+
+}
 \author{
 \strong{Maintainer}: Anatoly Tsyplenkov \email{atsyplenkov@gmail.com} (\href{https://orcid.org/0000-0003-4144-8402}{ORCID})
 

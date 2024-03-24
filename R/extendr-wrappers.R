@@ -32,5 +32,59 @@ NULL
 #'
 fil_wt <- function(y, lambda, order) .Call(wrap__fil_wt, y, lambda, order)
 
+#'
+#'Perform a Whittaker-Eilers smoother for non-equally spaced data.
+#'
+#'Insanely fast and reliable smoothing and interpolation with the Whittaker-Eilers method for non-equally spaced data.
+#'
+#'@param y numeric vector to smooth (must be of class double!!)
+#'@param x numeric vector with sample positions
+#'@param lambda an number of class double for smoothing control. The larger the lambda, the smoother the data.
+#'@param order an integer for smoothing control. A higher order means the Whittaker will consider more adjacent elements while smoothing.
+#'
+#'@examples
+#'data("airquality")
+#'
+#'airquality$Ozone_smooth <- 
+#'  fil_wt_x(as.double(airquality$Ozone), as.double(seq_along(airquality$Ozone)), 10, 2)
+#'
+#'plot(airquality$Ozone, type = "l", xlab = "Days", ylab = "Ozone")
+#'lines(airquality$Ozone_smooth, co = "red")
+#'@export
+#'
+fil_wt_x <- function(y, x, lambda, order) .Call(wrap__fil_wt_x, y, x, lambda, order)
+
+#' Cartesian distance between two points
+#' 
+#' Given two planar coordinates, estimates the distance between them
+#' 
+#' @param  x1 double, X coordinate of the first point
+#' @param  y1 double, Y coordinate of the first point
+#' @param  x2 double, X coordinate of the second point
+#' @param  y2 double, Y coordinate of the second point
+#' 
+#' @returns a numeric value of class double
+cartesian_distance <- function(x1, y1, x2, y2) .Call(wrap__cartesian_distance, x1, y1, x2, y2)
+
+#' Harvesine distance between two points
+#' 
+#' Given two angular coordinates, estimates the distance between them
+#' 
+#' @param  lon1 double, longitude (X1) of the first point
+#' @param  lat1 double, latitude (Y1) of the first point
+#' @param  lon2 double, longitude (X2) of the second point
+#' @param  lat2 double, latitude (Y2) of the second point
+#' 
+#' @returns a numeric value of class double
+haversine_distance <- function(lon1, lat1, lon2, lat2) .Call(wrap__haversine_distance, lon1, lat1, lon2, lat2)
+
+haversine_distance_vector <- function(lon_vec, lat_vec) .Call(wrap__haversine_distance_vector, lon_vec, lat_vec)
+
+cartesian_distance_vector <- function(x_vec, y_vec) .Call(wrap__cartesian_distance_vector, x_vec, y_vec)
+
+to_linestrings <- function(x, y) .Call(wrap__to_linestrings, x, y)
+
+to_linestring <- function(x, y) .Call(wrap__to_linestring, x, y)
+
 
 # nolint end

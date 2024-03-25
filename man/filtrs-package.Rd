@@ -17,6 +17,6 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Anatoly Tsyplenkov \email{atsyplenkov@gmail.com} (\href{https://orcid.org/0000-0003-4144-8402}{ORCID})
+\strong{Maintainer}: Anatoly Tsyplenkov \email{atsyplenkov@fastmail.com} (\href{https://orcid.org/0000-0003-4144-8402}{ORCID})
 
 }

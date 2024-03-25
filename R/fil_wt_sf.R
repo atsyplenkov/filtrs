@@ -1,5 +1,56 @@
-#' @noRd
+#' Spatial smoothing with Whittaker-Eilers filter.
+#'
+#' @description Applies [filtrs::fil_wt_x()] for \code{sf} objects.
+#' Since the majority of linear objects (i.e., rivers, roads, etc.)
+#' have non-equally spaced coordinates, the vector of sample positions
+#' (see [this blog post](https://www.anbowell.com/blog/the-perfect-way-to-smooth-your-noisy-data)
+#' for details) is estimated automatically based on the distance between
+#' point locations. Depending on planar or angular geometry, the Cartesian or
+#' Haversine distance is calculated.
+#'
+#' @param input \code{sf} object of geometry type LINESTRING. Note that
+#' currently, only single lines are supported.
+#' @param lamda Double, inherits from [filtrs::fil_wt_x()].
+#' @param order Double, inherits from [filtrs::fil_wt_x()].
+#' @param keep_start Boolean, should starting/ending points remained unchanged?
+#' Default \code{TRUE}
+#'
+#' @return an \code{sf} object
 #' @export
+#'
+#' @examples
+#' if (rlang::is_installed("spData")) {
+#' library(sf)
+#' library(filtrs)
+#' library(spData)
+#'
+#' rivers <-
+#'   seine[3, ]
+#'
+#' rivers_smoothed <-
+#'   fil_wt_sf(rivers, lamda = 10e3, order = 3)
+#'
+#' plot(
+#'   sf::st_geometry(rivers),
+#'   col = "grey30",
+#'   lwd = 3.5,
+#'   axes = TRUE
+#' )
+#' plot(
+#'   sf::st_geometry(rivers_smoothed),
+#'   col = 'firebrick3',
+#'   lwd = 2,
+#'   add = TRUE
+#' )
+#'
+#' # Add the legend
+#' legend(
+#'   "bottomright",
+#'   legend = c("Original", "Smoothed"),
+#'   col = c("grey30", "firebrick3"),
+#'   lwd = c(3, 3)
+#' )
+#' }
 fil_wt_sf <-
   function(
     input,

@@ -80,17 +80,9 @@ library(smoothr)
 file_path <- system.file("exdata/examples.gpkg", package = "filtrs")
 
 lines <- 
-  sf::st_read(file_path, layer = "gswe") |>
+  sf::st_read(file_path, layer = "gswe", quiet = TRUE) |>
   # Increase nodes count for smoother result
   smoothr::smooth("densify", max_distance = 10)
-#> Reading layer `gswe' from data source 
-#>   `C:\Users\TsyplenkovA\AppData\Local\R\win-library\4.3\filtrs\exdata\examples.gpkg' 
-#>   using driver `GPKG'
-#> Simple feature collection with 1 feature and 0 fields
-#> Geometry type: LINESTRING
-#> Dimension:     XY
-#> Bounding box:  xmin: 522056.5 ymin: 4985769 xmax: 523062.9 ymax: 4986405
-#> Projected CRS: WGS 84 / UTM zone 37N
 
 lines_wt <- 
   fil_wt_sf(lines, lamda = 10^-7, order = 3)
@@ -165,8 +157,8 @@ bench::mark(
 #> # A tibble: 2 × 6
 #>   expression   min median `itr/sec` mem_alloc `gc/sec`
 #>   <bch:expr> <dbl>  <dbl>     <dbl>     <dbl>    <dbl>
-#> 1 filtrs       1      1        33.9      1         Inf
-#> 2 smoothr     35.7   35.2       1        8.19      NaN
+#> 1 filtrs       1      1        32.4      1        2.95
+#> 2 smoothr     35.6   34.1       1        8.19     1
 ```
 
 ## Similar packages

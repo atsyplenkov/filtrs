@@ -68,7 +68,7 @@ library(smoothr)
 file_path <- system.file("exdata/examples.gpkg", package = "filtrs")
 
 lines <- 
-  sf::st_read(file_path, layer = "gswe") |>
+  sf::st_read(file_path, layer = "gswe", quiet = TRUE) |>
   # Increase nodes count for smoother result
   smoothr::smooth("densify", max_distance = 10)
 
